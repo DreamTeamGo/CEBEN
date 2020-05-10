@@ -115,7 +115,7 @@ void Client::create_clients(const char *clients[], const int num)
     BOOST_LOG_TRIVIAL(info) <<  "create_clients";
     boost::thread_group threads;
     Client cl;
-    for ( int i = 0; i < num; i++ ) {
+    for ( auto i = 0; i < num; i++ ) {
         threads.create_thread(boost::bind(&Client::run_client, &cl, clients[i], MIN_ATTEMPTS));
         boost::this_thread::sleep(boost::posix_time::millisec(100));
     }
